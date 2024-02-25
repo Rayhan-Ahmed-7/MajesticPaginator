@@ -1,22 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+type ItemType = "dot" | "page";
+
+interface Item {
+    selected: boolean;
+    type: ItemType;
+    page: number;
+}
+
+const generateRange = (start: number, end: number): Item[] => {
+    return Array.from(
+        { length: end - start },
+        (_, index) => ({
+            selected: false,
+            type: "page",
+            page: start + index
+        })
+    );
+};
 
 const usePagination = () => {
-    const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
-    const [range, setRange] = useState<number[]>([])
+    const [range, setRange] = useState<Item[]>([]);
     const totalData = 76;
+    let totalPage = Math.ceil(totalData / pageSize);
+    let firstElement = 1;
+    let lastElement = totalPage;
 
     useEffect(() => {
+        if (totalPage > 5) {
+            setRange([...generateRange(firstElement, 6)])
+        }
+    }, [])
 
-        setRange(generateRange(4, 8))
-    },[])
-    const generateRange = (start: number, end: number) => Array.from(
-        { length: end - start },
-        (value, index) => start + index
-    )
-    console.log(generateRange(4, 8))
-
-    return { currentPage, setCurrentPage, pageSize, setPageSize, range };
+    return { pageSize, setPageSize, range };
 };
 
 export default usePagination;
