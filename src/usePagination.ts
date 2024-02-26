@@ -35,29 +35,30 @@ const usePagination = ({ count = 76 }: { count: number }) => {
     let firstElement: Item = { page: 1, selected: false, type: 'page' };
     let lastElement: Item = { page: totalPage, selected: false, type: 'page' };
 
-    let sibilings = 2;
+    let sibilings = 3;
     let totalPageNumbers = sibilings + 5;
 
-    let leftSibiling = { page: selected.page - 1, selected: false, type: 'page' };
-    let rightSibiling = { page: selected.page + 1, selected: false, type: 'page' };
+    let leftSibiling = { page: Math.max(selected.page - sibilings, 1), selected: false, type: 'page' };
+    let rightSibiling = { page: Math.min(selected.page + sibilings, totalPage), selected: false, type: 'page' };
 
     let paginationRange: Item[] = useMemo(() => {
         if (totalPage <= totalPageNumbers) {
             return [...generateRange(1, totalPage)]
         }
+        // add dots only when siblings are closed to length +- 2;
         let shouldShowLeftDot = leftSibiling.page > 2;
         let shouldShowRightDot = rightSibiling.page < totalPage - 2;
-
+        
         if (shouldShowRightDot && !shouldShowLeftDot) {
-            return [...generateRange(1, 5), dot, lastElement]
+            return [...generateRange(1, totalPageNumbers), dot, lastElement]
         }
         if (shouldShowLeftDot && !shouldShowRightDot) {
-            return [firstElement, dot, ...generateRange(totalPage - 5 + 1, totalPage)]
+            return [firstElement, dot, ...generateRange(totalPage - totalPageNumbers + 1, totalPage)]
         }
         if (shouldShowLeftDot && shouldShowRightDot) {
             return [firstElement, dot, ...generateRange(leftSibiling.page, rightSibiling.page), dot, lastElement]
         }
-        return []
+        return [firstElement, dot, ...generateRange(leftSibiling.page, rightSibiling.page), dot, lastElement]
     }, [selected])
 
     return { selected, setSelected, pageSize, setPageSize, paginationRange };
