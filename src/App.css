@@ -21,7 +21,7 @@
     background-color: #ededed;
 }
 
-.pagination_item .active {
+.pagination_item.active {
     color: white;
     background-color: black;
 }

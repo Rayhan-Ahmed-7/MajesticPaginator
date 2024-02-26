@@ -4,7 +4,7 @@ interface Option {
     label: string,
     value: string | number
 }
-const Select = ({ onChange, options, defaultValue = { label: "default", value: 'default' } }: { onChange?: Function, defaultValue?: Option, options: Option[] }) => {
+const Select = ({ onChange, options, defaultValue = { label: "5/page", value: 5 } }: { onChange?: Function, defaultValue?: Option, options: Option[] }) => {
     const [selectClicked, setSelectClicked] = useState<boolean>(false)
     const [selectedOption, setSelectedOption] = useState<Option>(defaultValue)
     useEffect(() => {
