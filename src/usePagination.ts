@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-type ItemType = "dot" | "page";
+type ItemType = "left_dot" | "right_dot" | "page";
 
 interface Item {
     selected: boolean;
@@ -19,8 +19,13 @@ const generateRange = (start: number, end: number): Item[] => {
     );
 };
 
-let dot: Item = {
-    type: 'dot',
+let leftDot: Item = {
+    type: 'left_dot',
+    selected: false,
+    page: 0,
+}
+let rightDot: Item = {
+    type: 'right_dot',
     selected: false,
     page: 0,
 }
@@ -48,17 +53,17 @@ const usePagination = ({ count = 76 }: { count: number }) => {
         // add dots only when siblings are closed to length +- 2;
         let shouldShowLeftDot = leftSibiling.page > 2;
         let shouldShowRightDot = rightSibiling.page < totalPage - 2;
-        
+
         if (shouldShowRightDot && !shouldShowLeftDot) {
-            return [...generateRange(1, totalPageNumbers), dot, lastElement]
+            return [...generateRange(1, totalPageNumbers), rightDot, lastElement]
         }
         if (shouldShowLeftDot && !shouldShowRightDot) {
-            return [firstElement, dot, ...generateRange(totalPage - totalPageNumbers + 1, totalPage)]
+            return [firstElement, leftDot, ...generateRange(totalPage - totalPageNumbers + 1, totalPage)]
         }
         if (shouldShowLeftDot && shouldShowRightDot) {
-            return [firstElement, dot, ...generateRange(leftSibiling.page, rightSibiling.page), dot, lastElement]
+            return [firstElement, leftDot, ...generateRange(leftSibiling.page, rightSibiling.page), rightDot, lastElement]
         }
-        return [firstElement, dot, ...generateRange(leftSibiling.page, rightSibiling.page), dot, lastElement]
+        return [firstElement, leftDot, ...generateRange(leftSibiling.page, rightSibiling.page), rightDot, lastElement]
     }, [selected])
 
     return { selected, setSelected, pageSize, setPageSize, paginationRange };
