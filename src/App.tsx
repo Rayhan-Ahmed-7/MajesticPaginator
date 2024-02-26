@@ -42,7 +42,9 @@ function App() {
         <option value="10">10/page</option>
         <option value="15">15/page</option>
       </select> */}
-      <Select options={[{ label: "5/page", value: 10 },{ label: "10/page", value: 10 } ,{ label: "15/page", value: 10 }  ]}/>
+      <Select
+        onChange={(option) => console.log(option)}
+        options={[{ label: "5/page", value: 5 }, { label: "10/page", value: 10 }, { label: "15/page", value: 15 }]} />
     </div>
   )
 }
