@@ -45,7 +45,7 @@ const usePagination = ({ count = 76 }: { count: number }) => {
     let firstElement: Item = { page: 1, selected: false, type: 'page' };
     let lastElement: Item = { page: totalPage, selected: false, type: 'page' };
 
-    let sibilings = 3;
+    let sibilings = 1;
     let totalPageNumbers = sibilings + 5;
 
     let leftSibiling = { page: Math.max(selected.page - sibilings, 1), selected: false, type: 'page' };

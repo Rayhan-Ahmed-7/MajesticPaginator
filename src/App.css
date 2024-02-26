@@ -1,3 +1,112 @@
+:root {
+    --dot_color: #ededed;
+}
+
+.pagination {
+    display: flex;
+}
+
+.pagination_item {
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    padding: 4px;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination_item.page_btn:hover:not(.active) {
+    background-color: #ededed;
+}
+
 .active {
-    color: brown;
+    color: white;
+    background-color: black;
+}
+
+.arrow {
+    display: inline-block;
+    position: relative;
+}
+
+.arrow.arrow_right {
+    transform: rotate(-180deg);
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 2px;
+    border-radius: 0px 4px 4px 0px;
+    background-color: black;
+    transform-origin: 6% 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.arrow::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.next_btn,
+.previous_btn {
+    border: none;
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+    margin: 5px;
+    background-color: var(--dot_color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.next_btn:disabled,
+.previous_btn:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
+.next_btn:disabled.arrow::before,
+.next_btn:disabled.arrow::after,
+.previous_btn:disabled.arrow::before,
+.previous_btn:disabled.arrow::after{
+    background-color: #8d8d8d;
+}
+
+.right_dot {
+    transform: rotate(180deg);
+}
+
+
+
+.pagination_item .dot {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--dot_color);
+    position: relative;
+}
+
+.pagination_item .dot::after {
+    content: "";
+    position: absolute;
+    right: -7px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--dot_color);
+}
+
+.pagination_item .dot::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--dot_color);
 }
