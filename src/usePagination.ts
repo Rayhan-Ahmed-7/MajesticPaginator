@@ -31,11 +31,16 @@ let rightDot: Item = {
 }
 
 const usePagination = ({ count = 76 }: { count: number }) => {
+
     const [selected, setSelected] = useState<Item>({ page: 1, type: 'page', selected: true })
     const [pageSize, setPageSize] = useState(10);
     const totalData = count;
 
     let totalPage = Math.ceil(totalData / pageSize);
+
+    const goTo = (index: number) => {
+        setSelected({ page: index < 1 ? 1 : index >= totalPage ? totalPage : index, type: 'page', selected: true })
+    }
 
     let firstElement: Item = { page: 1, selected: false, type: 'page' };
     let lastElement: Item = { page: totalPage, selected: false, type: 'page' };
@@ -64,9 +69,9 @@ const usePagination = ({ count = 76 }: { count: number }) => {
             return [firstElement, leftDot, ...generateRange(leftSibiling.page, rightSibiling.page), rightDot, lastElement]
         }
         return [firstElement, leftDot, ...generateRange(leftSibiling.page, rightSibiling.page), rightDot, lastElement]
-    }, [selected])
+    }, [selected, pageSize])
 
-    return { selected, setSelected, pageSize, setPageSize, paginationRange };
+    return { selected, setSelected, totalPage, pageSize, setPageSize, paginationRange, goTo };
 };
 
 export default usePagination;
