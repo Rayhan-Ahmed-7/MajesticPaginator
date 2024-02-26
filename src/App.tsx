@@ -1,13 +1,14 @@
 import usePagination from "./usePagination"
 import "./App.css"
 import { useState } from "react";
+import Select from "./Select";
 function App() {
   const { paginationRange, selected, totalPage, setPageSize, setSelected, goTo } = usePagination({ count: 96 })
 
   const [showSkip, setShowSkip] = useState<null | string>(null);
   return (
     <div className="pagination">
-      <button className="previous_btn arrow" disabled={selected.page == 1} onClick={() => { goTo(selected.page - 1) }}></button>
+      {/* <button className="previous_btn arrow" disabled={selected.page == 1} onClick={() => { goTo(selected.page - 1) }}></button>
       {
         paginationRange.map((i, index) => {
           if (i.type == 'page') {
@@ -35,12 +36,13 @@ function App() {
           }
         })
       }
-      <button className="next_btn arrow arrow_right" disabled={selected.page == totalPage} onClick={() => { goTo(selected.page + 1) }}></button>
-      <select className="page_size_selector" onChange={(e) => setPageSize(parseInt(e.target.value))} name="page_size" id="page_size">
+      <button className="next_btn arrow arrow_right" disabled={selected.page == totalPage} onClick={() => { goTo(selected.page + 1) }}></button> */}
+      {/* <select className="page_size_selector" onChange={(e) => setPageSize(parseInt(e.target.value))} name="page_size" id="page_size">
         <option value="5">5/page</option>
         <option value="10">10/page</option>
         <option value="15">15/page</option>
-      </select>
+      </select> */}
+      <Select options={[{ label: "5/page", value: 10 },{ label: "10/page", value: 10 } ,{ label: "15/page", value: 10 }  ]}/>
     </div>
   )
 }
