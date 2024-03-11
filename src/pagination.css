@@ -4,6 +4,7 @@
 
 .pagination {
     display: flex;
+    align-items: center;
 }
 
 .pagination_item {

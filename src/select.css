@@ -28,7 +28,7 @@ li {
     background-color: rgb(247, 247, 247);
     max-height: 0;
     overflow: hidden;
-    transition: all .5s ease;
+    transition: max-height .3s linear;
 }
 
 .select_wrapper.active .options {
@@ -47,4 +47,15 @@ li {
 
 .option.selected {
     background-color: #e0e0e0;
+}
+
+.options::-webkit-scrollbar {
+    width: 8px;
+    background: #afafaf;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.options::-webkit-scrollbar-thumb {
+    background: #525861;
+    border-radius: 8px 8px 8px 8px;
 }
