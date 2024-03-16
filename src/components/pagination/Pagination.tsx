@@ -2,8 +2,8 @@ import "./pagination.css"
 import { useEffect, useState } from "react";
 import usePagination from "./usePagination";
 import Select from "../select/Select";
-function Pagination({ onChange }: { onChange?: Function }) {
-  const { paginationRange, selected, totalPage, setPageSize, setSelected, goTo } = usePagination({ count: 96 })
+function Pagination({ currentPage, total, onChange }: { currentPage: number, total: number, onChange?: Function }) {
+  const { paginationRange, selected, totalPage, setPageSize, setSelected, goTo } = usePagination({ total, currentPage })
 
   const [showSkip, setShowSkip] = useState<null | string>(null);
 

@@ -30,13 +30,14 @@ let rightDot: Item = {
     page: 0,
 }
 
-const usePagination = ({ count = 76 }: { count: number }) => {
+const usePagination = ({ total = 76, currentPage }: { total: number, currentPage: number }) => {
 
-    const [selected, setSelected] = useState<Item>({ page: 1, type: 'page', selected: true })
     const [pageSize, setPageSize] = useState(10);
-    const totalData = count;
 
-    let totalPage = Math.ceil(totalData / pageSize);
+    let totalPage = Math.ceil(total / pageSize);
+
+    const [selected, setSelected] = useState<Item>({ page: currentPage <= totalPage ? currentPage : 1, type: 'page', selected: true })
+
 
     const goTo = (index: number) => {
         setSelected({ page: index < 1 ? 1 : index >= totalPage ? totalPage : index, type: 'page', selected: true })

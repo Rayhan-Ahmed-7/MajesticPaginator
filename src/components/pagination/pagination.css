@@ -9,10 +9,10 @@
 
 .pagination_item {
     border: none;
-    width: 25px;
-    height: 25px;
+    width: max-content;
+    height: max-content;
     margin: 5px;
-    padding: 4px;
+    padding: 4px 8px;
     background-color: transparent;
     border-radius: 4px;
     cursor: pointer;
