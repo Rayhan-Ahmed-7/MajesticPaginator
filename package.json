@@ -1,7 +1,7 @@
 {
   "name": "majestic-paginator",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -10,7 +10,7 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
-      "types":"./dist/index.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-css": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.28",
