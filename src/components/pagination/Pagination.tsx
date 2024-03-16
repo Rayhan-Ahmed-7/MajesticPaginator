@@ -48,4 +48,4 @@ function Pagination({ onChange }: { onChange?: Function }) {
   )
 }
 
-export default Pagination
+export { Pagination }

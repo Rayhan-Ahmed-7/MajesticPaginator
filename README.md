@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+# Majestic Paginator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Majestic Paginator is a classic paginator designed to provide efficient and elegant pagination functionality for your web pages. With its stylish and elegant design, Majestic Paginator enhances the user experience by offering seamless navigation through your content.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Efficient Pagination**: Navigate through your web pages effortlessly with Majestic Paginator's efficient pagination system.
+  
+- **Stylish and Elegant Design**: Majestic Paginator boasts a stylish and elegant design, enhancing the aesthetic appeal of your web pages.
+  
+- **Skip Functionality**: Skip through multiple pages at once with the convenient skip buttons, allowing you to jump ahead by 5 pages at a time.
