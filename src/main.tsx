@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import Pagination from './components/pagination/Pagination'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
-    <App />
+  <Pagination/>
   // </React.StrictMode>,
 )

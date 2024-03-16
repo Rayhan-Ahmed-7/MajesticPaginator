@@ -1,14 +1,14 @@
-import usePagination from "./usePagination"
 import "./pagination.css"
 import { useEffect, useState } from "react";
-import Select from "./Select";
-function Pagination({ onChange }: { onChange: Function }) {
+import usePagination from "./usePagination";
+import Select from "../select/Select";
+function Pagination({ onChange }: { onChange?: Function }) {
   const { paginationRange, selected, totalPage, setPageSize, setSelected, goTo } = usePagination({ count: 96 })
 
   const [showSkip, setShowSkip] = useState<null | string>(null);
 
   useEffect(() => {
-    onChange(selected.page)
+    onChange && onChange(selected.page)
   }, [selected])
   return (
     <div className="pagination">
