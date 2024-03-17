@@ -18,7 +18,7 @@ To use the Pagination component in your React application, follow these steps:
 1. Import the Pagination component into your file:
 
     ```javascript
-    import { Pagination } from './components/pagination/Pagination';
+    import { Pagination } from "majestic-paginator";
     ```
 
 2. Place the Pagination component in your JSX code, providing the necessary props:

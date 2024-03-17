@@ -5,7 +5,7 @@ import Select from "../select/Select";
 function Pagination({ currentPage, total, onChange }: { currentPage: number, total: number, onChange?: Function }) {
   const { paginationRange, selected, totalPage, setPageSize, setSelected, goTo } = usePagination({ total, currentPage })
 
-  const [showSkip, setShowSkip] = useState<null | string>('right_dot');
+  const [showSkip, setShowSkip] = useState<null | string>(null);
 
   useEffect(() => {
     onChange && onChange(selected.page)
@@ -21,17 +21,17 @@ function Pagination({ currentPage, total, onChange }: { currentPage: number, tot
             return <button key={i.type} className="pagination_item" onMouseOver={() => setShowSkip(i.type)} onMouseOut={() => setShowSkip(null)}>
               {
                 showSkip == 'left_dot' &&
-                <svg onClick={() => { goTo(selected.page - 5) }} xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="m13 19l-6-7l6-7" /><path d="m17 19l-6-7l6-7" /></g></svg>
+                <svg onClick={() => { goTo(selected.page - 5) }} xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="m13 19l-6-7l6-7" /><path d="m17 19l-6-7l6-7" /></g></svg>
               }
               {
                 (showSkip == null || showSkip == 'right_dot') && <span className="dot" key={index + i.type} />
               }
             </button>
           } else if (i.type == "right_dot") {
-            return <button key={i.type} className="pagination_item" >
+            return <button key={i.type} className="pagination_item" onMouseOver={() => setShowSkip(i.type)} onMouseOut={() => setShowSkip(null)}>
               {
                 showSkip == 'right_dot' &&
-                <svg className="right_dot" onClick={() => { goTo(selected.page + 5) }} xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="m13 19l-6-7l6-7" /><path d="m17 19l-6-7l6-7" /></g></svg>
+                <svg className="right_dot" onClick={() => { goTo(selected.page + 5) }} xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="m13 19l-6-7l6-7" /><path d="m17 19l-6-7l6-7" /></g></svg>
               }
               {
                 (showSkip == null || showSkip == 'left_dot') && <span className="dot" key={index + i.type} />
